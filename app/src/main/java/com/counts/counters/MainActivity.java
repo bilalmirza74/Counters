@@ -1,8 +1,8 @@
 package com.counts.counters;
 
-import android.support.v7.app.AppCompatActivity;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     int counter;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,20 +21,14 @@ public class MainActivity extends AppCompatActivity {
         Button Reset = findViewById(R.id.Reset);
 
         counter = 0;
-        btnCounter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                counter++;
-                textCounter.setText(""+counter);
-            }
+        btnCounter.setOnClickListener(view -> {
+            counter++;
+            textCounter.setText(""+counter);
         });
 
-        Reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                counter=0;
-                textCounter.setText(""+counter);
-            }
+        Reset.setOnClickListener(view -> {
+            counter=0;
+            textCounter.setText(""+counter);
         });
     }
 }
